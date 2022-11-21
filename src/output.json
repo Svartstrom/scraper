@@ -1,0 +1,26 @@
+[
+  {
+    "house": "DNB",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String"
+  },
+  {
+    "house": "DNB",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String"
+  },
+  {
+    "house": "Barclays",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String"
+  },
+  {
+    "house": "Barclays",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String"
+  }
+]
