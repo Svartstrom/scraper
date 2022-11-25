@@ -63,9 +63,11 @@ fn main() {
         let V: Vec<&str> = t.split("\n").collect();
         for v in V {
             if v.contains("<p>"){
+                let mut cont = false;
                 for i in 0..CFG.Houses.len() {
                     let mut this_house = String::clone(&CFG.Houses[i].name);
                     if v.contains(&this_house) {
+                        cont = true;
                         let  rec = Recomendation {
                             house: String::clone(&this_house),
                             //rec: Default::default(),
@@ -81,6 +83,9 @@ fn main() {
                         }
                         */
                     }
+                }
+                if !cont {
+                    println!("{v}");
                 }
             }
         }

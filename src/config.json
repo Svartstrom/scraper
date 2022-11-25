@@ -1,3 +1,13 @@
 {
-    "Houses":[{"name":"DNB"}, {"name":"Barclays"}]
+    "Houses":[
+        {"name":"DNB"},
+        {"name":"Citi Investment Research"},
+        {"name":"Deutsche Bank"},
+        {"name":"Carnegie"},
+        {"name":"Danske Bank"},
+        {"name":"Kepler Chuvreux"}, 
+        {"name":"Citigroup"}, 
+        {"name":"DNB"}, 
+        {"name":"DNB"}, 
+        {"name":"Barclays"}]
 }
