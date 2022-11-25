@@ -1,0 +1,5 @@
+# FOR V1
+    * Read all missign days
+    * Generate pos/neg for house and days
+    * Plot pos/neg over time
+    * 
