@@ -29,8 +29,23 @@ struct CONFIG {
     Houses: Vec<HOUSES>,
 }
 
+//fn read_from_json(p: Path) -> Vec<Recomendation> {} TODO
+//fn generate_
+
+/*fn read_from_placera(p: String) -> std::iter::Map<I, F> {//Vec<Recomendation> {
+    let response = reqwest::blocking::get(
+        p,
+        //"https://www.placera.se/placera/redaktionellt/2022/11/09/onsdagens-alla-ny-aktierekar.html",
+    )
+    .unwrap()
+    .text()
+    .unwrap();
+    let document = scraper::Html::parse_document(&response);
+    let title_selector = scraper::Selector::parse("div.parbase").unwrap();
+    return document.select(&title_selector).map(|x| x.inner_html());
+}*/
+
 fn main() {
-    //let input_path = "~/git/rust/scrape_placra/src/config.json";
     let input_path = Path::new("./src/config.json");
     let output_path = Path::new("./src/output.json");
 
@@ -38,7 +53,6 @@ fn main() {
         let CFG = std::fs::read_to_string(&input_path).unwrap();
         serde_json::from_str::<CONFIG>(&CFG).unwrap()
     };
-
     let response = reqwest::blocking::get(
         "https://www.placera.se/placera/redaktionellt/2022/11/09/onsdagens-alla-ny-aktierekar.html",
     )
@@ -48,17 +62,11 @@ fn main() {
     let document = scraper::Html::parse_document(&response);
     let title_selector = scraper::Selector::parse("div.parbase").unwrap();
     let titles = document.select(&title_selector).map(|x| x.inner_html());
-
+    
+    //let ppp = String::from("https://www.placera.se/placera/redaktionellt/2022/11/09/onsdagens-alla-ny-aktierekar.html");
+    //let titles = read_from_placera(ppp);
     let mut out: Vec<Recomendation> = Default::default();
-    //let mut day_dict =Dict<Vec<Recomendation>>::new();
-    /*for i in 0..CFG.Houses.len() {
-        out.push(
-            Recomendation {
-                house: String::clone(&CFG.Houses[i].name),
-                rec: Default::default(),
-            }
-        )
-    }*/
+
     for t in titles {
         let V: Vec<&str> = t.split("\n").collect();
         for v in V {
@@ -70,18 +78,11 @@ fn main() {
                         cont = true;
                         let  rec = Recomendation {
                             house: String::clone(&this_house),
-                            //rec: Default::default(),
                             stock: String::from("Stock"),
                             price: 32.0,
                             rec: String::from("String"),
                         };
                         out.push(rec);
-                        /*for this in &out {
-                            if this.house == this_house {
-                                this.rec.push(rec)
-                            }
-                        }
-                        */
                     }
                 }
                 if !cont {
