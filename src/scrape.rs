@@ -45,13 +45,13 @@ struct CONFIG {
     return document.select(&title_selector).map(|x| x.inner_html());
 }*/
 
-fn main() {
+pub fn scrape_placera() {
     let input_path = Path::new("./src/config.json");
     let output_path = Path::new("./src/output.json");
 
-    let mut CFG = {
-        let CFG = std::fs::read_to_string(&input_path).unwrap();
-        serde_json::from_str::<CONFIG>(&CFG).unwrap()
+    let mut cfg = {
+        let cfg = std::fs::read_to_string(&input_path).unwrap();
+        serde_json::from_str::<CONFIG>(&cfg).unwrap()
     };
     let response = reqwest::blocking::get(
         "https://www.placera.se/placera/redaktionellt/2022/11/09/onsdagens-alla-ny-aktierekar.html",
@@ -72,8 +72,8 @@ fn main() {
         for v in V {
             if v.contains("<p>"){
                 let mut cont = false;
-                for i in 0..CFG.Houses.len() {
-                    let mut this_house = String::clone(&CFG.Houses[i].name);
+                for i in 0..cfg.Houses.len() {
+                    let this_house = String::clone(&cfg.Houses[i].name);
                     if v.contains(&this_house) {
                         cont = true;
                         let  rec = Recomendation {
@@ -93,4 +93,5 @@ fn main() {
         std::fs::write(output_path,
         serde_json::to_string_pretty(&out).unwrap());
     }    
+    println!("end of func");
 }
