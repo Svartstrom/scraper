@@ -3,102 +3,112 @@
     "house": "Carnegie",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Carnegie återupptar </b>bevakningen av <b>Securitas </b>med köprekommendation. Riktkursen är 114 kronor.</p>"
   },
   {
     "house": "Danske Bank",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Danske Bank sänker</b> riktkursen för <b>Synsam</b> till 64 kronor (75), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux höjer</b> riktkursen för <b>New Wave</b> till 240 kronor (220), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>Wästbygg</b> till 52 kronor (78), upprepar köp</p>"
   },
   {
     "house": "DNB",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>DNB Markets höjer</b> sin rekommendation för <b>Latour</b> till köp från behåll. Riktkursen höjs till 225 från 220 kronor.</p>"
   },
   {
     "house": "DNB",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
-  },
-  {
-    "house": "DNB",
-    "stock": "Stock",
-    "price": 32.0,
-    "rec": "String"
-  },
-  {
-    "house": "DNB",
-    "stock": "Stock",
-    "price": 32.0,
-    "rec": "String"
-  },
-  {
-    "house": "DNB",
-    "stock": "Stock",
-    "price": 32.0,
-    "rec": "String"
-  },
-  {
-    "house": "DNB",
-    "stock": "Stock",
-    "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>DNB Markets höjer</b> riktkursen för <b>New Wave</b> till 240 kronor från 225 kronor. Rekommendationen köp upprepas.</p>"
   },
   {
     "house": "Carnegie",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Carnegie </b>sänker riktkursen för <b>Acast </b>till 10 kronor (14), upprepar köp</p>"
   },
   {
     "house": "Barclays",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Barclays sänker</b> riktkursen för <b>Acast</b> till 12,80 kronor (13,50), upprepar jämvikt</p>"
   },
   {
     "house": "Citigroup",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Citigroup sänker</b> riktkursen för <b>Swedbank</b> till 190 kronor (195), upprepar köp</p>"
   },
   {
     "house": "Citigroup",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Citigroup sänker</b> riktkursen för <b>SEB</b> till 119 kronor (124), upprepar neutral</p>"
   },
   {
     "house": "Citi Investment Research",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Citi Investment Research sänker</b> sin rekommendation för <b>SHB</b> till neutral från köp. Riktkursen sänks till 110 från 114 kronor.</p>"
   },
   {
     "house": "Deutsche Bank",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Deutsche Bank sänker</b> riktkursen för Ericsson till 70 kronor från 80 kronor. Rekommendationen behåll upprepas.</p>"
+  },
+  {
+    "house": "Handelsbanken Capital Markets",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Handelsbanken Capital Markets sänker</b> sin långsiktiga rekommendation, på tre års sikt, för <b>Stendörren</b> till market perform från outperform. Riktkursen är 240 kronor.</p>"
   },
   {
     "house": "Barclays",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Barclays sänker</b> riktkursen för <b>Vimian</b> till 50 kronor (85), upprepar övervikt</p>"
   },
   {
     "house": "Carnegie",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Carnegie höjer</b> riktkursen för <b>Profoto</b> till 97 kronor (95), upprepar behåll</p>"
   },
   {
     "house": "Carnegie",
     "stock": "Stock",
     "price": 32.0,
-    "rec": "String"
+    "rec": "String",
+    "raw": "<p><b>Carnegie höjer</b> riktkursen för <b>Boozt</b> till 110 kronor (95), upprepar köp</p>"
   }
 ]
