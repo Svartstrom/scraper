@@ -29,7 +29,7 @@ impl Recomendation {
             stock: String::from("Stock"),
             price: 32.0,
             rec: String::from("String"),
-            raw: String::from("v")
+            raw: String::clone(&v.to_string())
         };
     }
 } 
@@ -117,6 +117,9 @@ pub fn scrape_placera() {
                 }
             }
         }
+        //dummies.sort_by(|d1, d2| d1.x.cmp(&d2.x));
+        
+        out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
         match std::fs::write(output_path, serde_json::to_string_pretty(&out).unwrap()) {
             Err(e) => println!("{:?}", e),
             _ => ()
