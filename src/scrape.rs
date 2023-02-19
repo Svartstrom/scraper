@@ -13,16 +13,17 @@ struct Recomendation {
 }
 
 impl Recomendation {
-    fn default () -> Self {
+    fn new () -> Self {
         return Recomendation {
-            house: String::from("Testing"),//clone(&this_house),
+            house: String::from("Unknown"),//clone(&this_house),
             stock: String::from("Stock"),
-            price: 32.0,
+            price: 100.0,
             rec: String::from("String"),
             raw: String::from("v")
         };
     }
-    fn maker() -> Self{
+    fn from(v: &str) -> Self{
+        println!("{}",v);
         return Recomendation {
             house: String::from("Testing"),//clone(&this_house),
             stock: String::from("Stock"),
@@ -103,11 +104,15 @@ pub fn scrape_placera() {
                     let this_house = String::clone(&cfg.houses[i].name);
                     if v.contains(&this_house) {
                         cont = true;
-                        let mut rec = Recomendation::maker();
+                        let mut rec = Recomendation::from(&v);
+                        //println!("{}",v);
+                        rec.house = this_house;
                         out.push(rec);
                     }
                 }
                 if !cont {
+                    let mut rec = Recomendation::new();
+                    out.push(rec);
                     println!("{v}");
                 }
             }
