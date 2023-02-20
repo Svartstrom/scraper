@@ -13,29 +13,29 @@ struct Recomendation {
 }
 
 impl Recomendation {
-    fn new () -> Self {
+    fn new (raw: &str) -> Self {
         return Recomendation {
             house: String::from("Unknown"),//clone(&this_house),
             stock: String::from("Stock"),
             price: 100.0,
             rec: String::from("String"),
-            raw: String::from("v")
+            raw: String::clone(&raw.to_string())
         };
     }
-    fn from(v: &str, cfg: &CONFIG) -> Self{
+    fn from(raw: &str, cfg: &CONFIG) -> Self{
         for i in 0..cfg.houses.len() {
             let this_house = String::clone(&cfg.houses[i].name);
-            if v.contains(&this_house) {
+            if raw.contains(&this_house) {
                 return Recomendation {
                     house: String::clone(&this_house),
                     stock: String::from("Stock"),
                     price: 32.0,
                     rec: String::from("String"),
-                    raw: String::clone(&v.to_string())
+                    raw: String::clone(&raw.to_string())
                 };
             }
         }
-        return Recomendation::new();
+        return Recomendation::new(raw);
     }
 } 
 
@@ -56,7 +56,7 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
     let mut start = String::from("https://www.placera.se/placera/redaktionellt/");
     
     let day = match date.weekday() {
-        Weekday::Mon => String::from("måndagens"),
+        Weekday::Mon => String::from("mandagens"),
         Weekday::Tue => String::from("tisdagens"),
         Weekday::Wed => String::from("onsdagens"),
         Weekday::Thu => String::from("torsdagens"),
@@ -68,34 +68,56 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
 
     let end = String::from("-alla-ny-aktierekar.html");
     let day_nr_str;
+    let month_nr_str;
+    if date.month() < 10 {
+        month_nr_str = String::from("0".to_owned() + &date.month().to_string());
+    } else {
+        month_nr_str = date.month().to_string();
+    }
     if date.day() < 10 {
         day_nr_str = String::from("0".to_owned() + &date.day().to_string());
     } else {
         day_nr_str = date.day().to_string();
     }
-    let middle = String::from(date.year().to_string() + "/" + &date.month().to_string() + "/" + &day_nr_str.to_string() + "/") + &day;
+    let middle = String::from(date.year().to_string() + "/" + &month_nr_str.to_string() + "/" + &day_nr_str.to_string() + "/") + &day;
     start.push_str(&middle);
     start.push_str(&end);
     return Some(start); 
 }
 
 pub fn scrape_placera(cfg: &CONFIG) {
-
+    let mut all_recomendations: Vec<Recomendation> = Default::default();
+    
     let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
     //let output_path = Path::new("./src/output.json");
-    let mut out: Vec<Recomendation> = Default::default();
     if let Some(adress) = generate_adress(date) {
         println!("{}",adress);
-        out = parse_adress(&adress, &cfg);
+        if let Some(daily_recomendations) = parse_adress(&adress, &cfg) {
+            for rec in daily_recomendations {
+                all_recomendations.push(rec);
+            }
+        }
     }
-    match std::fs::write(&cfg.output_path, serde_json::to_string_pretty(&out).unwrap()) {
+    println!("{}",all_recomendations.len());
+    let date = NaiveDate::from_ymd_opt(2023, 02, 20).unwrap();
+    
+    if let Some(adress) = generate_adress(date) {
+        println!("{}",adress);
+        if let Some(daily_recomendations) = parse_adress(&adress, &cfg) {
+            for rec in daily_recomendations {
+                all_recomendations.push(rec);
+            }
+        }
+    }
+    println!("{}",all_recomendations.len());
+    out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
+    match std::fs::write(&cfg.output_path, serde_json::to_string_pretty(&all_recomendations).unwrap()) {
         Err(e) => println!("{:?}", e),
         _ => ()
     }
 }
 
-fn parse_adress(adress: &String, cfg: &CONFIG) -> Vec<Recomendation>{
-
+fn parse_adress(adress: &String, cfg: &CONFIG) -> Option<Vec<Recomendation>>{
     let response = reqwest::blocking::get(adress)
         .unwrap()
         .text()
@@ -116,6 +138,6 @@ fn parse_adress(adress: &String, cfg: &CONFIG) -> Vec<Recomendation>{
             }
         }
     }    
-    out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
-    return out;
+
+    return Some(out);
 }

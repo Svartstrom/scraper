@@ -110,5 +110,236 @@
     "price": 32.0,
     "rec": "String",
     "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>Wästbygg</b> till 52 kronor (78), upprepar köp</p>"
+  },
+  {
+    "house": "Carnegie",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Carnegie sänker</b> riktkursen för <b>NCAB Group</b> till 75 kronor (78), upprepar köp</p>"
+  },
+  {
+    "house": "DNB",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>DNB höjer</b> riktkursen för <b>Nyfosa</b> till 90 kronor (63), upprepar behåll</p>"
+  },
+  {
+    "house": "DNB",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>DNB höjer</b> riktkursen för <b>Scandic Hotels</b> till 65 kronor (61), upprepar köp</p>"
+  },
+  {
+    "house": "Danske Bank",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Danske Bank höjer</b> riktkursen för <b>Alligo</b> till 145 kronor (119), upprepar köp</p>"
+  },
+  {
+    "house": "Deutsche Bank",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Deutsche Bank höjer</b> riktkursen för <b>Embracer</b> till 70 kronor (60), upprepar köp</p>"
+  },
+  {
+    "house": "Handelsbanken Capital Markets",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Handelsbanken Capital Markets höjer</b> riktkursen för <b>Enad Global 7</b> till 55 kronor från 42 kronor. Rekommendationen köp upprepas.</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>Storytel</b> till 50 kronor (53), upprepar behåll</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux höjer</b> riktkursen för <b>Sagax</b> till 285 kronor (280), upprepar behåll</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux höjer</b> riktkursen för <b>Enad Global 7</b> till 37 kronor (34), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Stock",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>Synsam</b> till 60 kronor (65), upprepar köp</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Bank of America Merrill Lynch</b> höjer <b>Tietoevry</b> till neutral (underperform)</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Bank of America Merrill Lynch</b> sänker <b>Nibe</b> till neutral (köp)</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>SEB sänker Fortnox </b>till behåll (köp)</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Redburn inleder</b> bevakning på <b>Viaplay Group</b> med köp och riktkurs 535 kronor</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Bank of America Securities sänker</b> sin rekommendation för <b>Nibe</b> till neutral från outperform.</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Pareto Securities sänker</b> riktkursen för <b>Implantica</b> till 66 kronor från 80 kronor. Rekommendationen köp upprepas.</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Morgan Stanley sänker</b> riktkursen för <b>Boliden</b> till 485 kronor (510), upprepar jämvikt</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Morgan Stanley höjer</b> riktkursen för <b>Atlas Copco</b> till 107 kronor (100), upprepar undervikt</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>JP Morgan höjer Storskogen</b> till neutral (undervikt), riktkurs 11 kronor</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Keefe, Bruyette &amp; Woods höjer</b> riktkursen för <b>Nordea</b> till 150 kronor (140), upprepar market perform</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Keefe, Bruyette &amp; Woods höjer</b> riktkursen för <b>Swedbank</b> till 285 kronor (255), upprepar outperform</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>KBW sänker SEB</b> till underperform (market perform), riktkurs 145 kronor</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>KBW sänker</b> <b>Handelsbanken</b> till underperform (market perform), riktkurs 120 kronor</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>RBC höjer</b> riktkursen för <b>Boliden</b> till 360 kronor (325), upprepar sector perform</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><a href=\"https://www.avanza.se/placera/forstasidan.plc.html\"><b>Gå till Placera.se för att läsa fler artiklar</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här kan du lyssna på </b><a href=\"https://soundcloud.com/placera-analys\"><b>ljudspåren av våra inlästa artiklar</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här hittar du alla våra </b><a href=\"https://www.avanza.se/placera/aktier.plc.html\"><b>aktieanalyser</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här finns alla våra </b><a href=\"https://www.avanza.se/placera/fonder.plc.html\"><b>fondanalyser</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här hittar du allt om </b><a href=\"https://www.avanza.se/placera/mer_i_planboken.plc.html\"><b>privatekonomi</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här finns våra</b><a href=\"https://www.avanza.se/placera/tema-makrokommentar.plc.html\"><b> makrokommentarer</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här kan du lyssna våra </b><a href=\"https://www.avanza.se/placera/placerapodden.plc.html\"><b>poddar</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här hittar du </b><a href=\"https://www.avanza.se/placera/Placerastrategi.plc.html\"><b>det månatliga strategidokumentet</b></a><b></b></p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Här kan du se </b><a href=\"https://www.avanza.se/placera/redaktionellt/2020/11/02/redaktionens-aktieinnehav.plc.plc.html\"><b>redaktionens aktieinnnehav</b></a></p>"
   }
 ]
