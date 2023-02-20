@@ -1,6 +1,7 @@
 {
     "input_path":"./src/config.json",
     "output_path":"./src/output.json",
+    "path_404":"Sidan du ville besöka kan inte visas.&nbsp;Felet kan bero på att du skrivit in fel adress i webbläsaren eller använder ett gammalt bokmärke.",
     "houses":[
         {"name":"DNB"},
         {"name":"Citi Investment Research"},

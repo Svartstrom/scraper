@@ -48,11 +48,21 @@ struct HOUSES {
 pub struct CONFIG {    
     houses: Vec<HOUSES>,
     input_path: String,
-    output_path: String
+    output_path: String,
+    path_404: String
 }
 
 
 fn generate_adress(date: NaiveDate) -> Option<String> {
+    /*
+    https://www.placera.se/placera/redaktionellt/2023/02/20/mandagens-alla-ny-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/01/24/tisdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/15/onsdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/16/torsdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2022/11/10/torsdagens-alla-ny-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/17/fredagens-alla-nya-aktierekar.html
+    */
+    
     let mut start = String::from("https://www.placera.se/placera/redaktionellt/");
     
     let day = match date.weekday() {
@@ -65,8 +75,7 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
             return None;
         }
     };
-
-    let end = String::from("-alla-ny-aktierekar.html");
+    let end = String::from("-alla-nya-aktierekar.html");
     let day_nr_str;
     let month_nr_str;
     if date.month() < 10 {
@@ -99,7 +108,7 @@ pub fn scrape_placera(cfg: &CONFIG) {
         }
     }
     println!("{}",all_recomendations.len());
-    let date = NaiveDate::from_ymd_opt(2023, 02, 20).unwrap();
+    let date = NaiveDate::from_ymd_opt(2022, 11, 10).unwrap();
     
     if let Some(adress) = generate_adress(date) {
         println!("{}",adress);
@@ -110,7 +119,7 @@ pub fn scrape_placera(cfg: &CONFIG) {
         }
     }
     println!("{}",all_recomendations.len());
-    out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
+    all_recomendations.sort_by(|d1, d2| d1.house.cmp(&d2.house));
     match std::fs::write(&cfg.output_path, serde_json::to_string_pretty(&all_recomendations).unwrap()) {
         Err(e) => println!("{:?}", e),
         _ => ()
@@ -118,10 +127,18 @@ pub fn scrape_placera(cfg: &CONFIG) {
 }
 
 fn parse_adress(adress: &String, cfg: &CONFIG) -> Option<Vec<Recomendation>>{
-    let response = reqwest::blocking::get(adress)
+    let mut response = reqwest::blocking::get(adress)
         .unwrap()
         .text()
         .unwrap();
+    if response.contains(&cfg.path_404) {
+        let adress = adress.replace("nya-", "ny-");
+        println!("{}",adress);
+        response = reqwest::blocking::get(adress)
+        .unwrap()
+        .text()
+        .unwrap();
+    }
     
     let document = scraper::Html::parse_document(&response);
     let title_selector = scraper::Selector::parse("div.parbase").unwrap();
