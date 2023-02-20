@@ -45,7 +45,7 @@ struct HOUSES {
 }
 
 #[derive(Deserialize, Serialize, Debug)]
-struct CONFIG {    
+pub struct CONFIG {    
     houses: Vec<HOUSES>,
     input_path: String,
     output_path: String
@@ -79,30 +79,23 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
     return Some(start); 
 }
 
-pub fn scrape_placera() {
+pub fn scrape_placera(cfg: &CONFIG) {
 
     let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
-    let output_path = Path::new("./src/output.json");
+    //let output_path = Path::new("./src/output.json");
     let mut out: Vec<Recomendation> = Default::default();
     if let Some(adress) = generate_adress(date) {
         println!("{}",adress);
-        out = parse_adress(&adress);
+        out = parse_adress(&adress, &cfg);
     }
-    match std::fs::write(output_path, serde_json::to_string_pretty(&out).unwrap()) {
+    match std::fs::write(&cfg.output_path, serde_json::to_string_pretty(&out).unwrap()) {
         Err(e) => println!("{:?}", e),
         _ => ()
     }
 }
 
-fn parse_adress(adress: &String) -> Vec<Recomendation>{
+fn parse_adress(adress: &String, cfg: &CONFIG) -> Vec<Recomendation>{
 
-    let input_path = Path::new("./src/config.json");
-    let mut cfg = {
-        println!("{}",input_path.display());
-        let inner_cfg = std::fs::read_to_string(&input_path).unwrap();
-        serde_json::from_str::<CONFIG>(&inner_cfg).unwrap()
-    };
-    
     let response = reqwest::blocking::get(adress)
         .unwrap()
         .text()
