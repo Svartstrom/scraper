@@ -22,15 +22,20 @@ impl Recomendation {
             raw: String::from("v")
         };
     }
-    fn from(v: &str) -> Self{
-        println!("{}",v);
-        return Recomendation {
-            house: String::from("Testing"),//clone(&this_house),
-            stock: String::from("Stock"),
-            price: 32.0,
-            rec: String::from("String"),
-            raw: String::clone(&v.to_string())
-        };
+    fn from(v: &str, cfg: &CONFIG) -> Self{
+        for i in 0..cfg.houses.len() {
+            let this_house = String::clone(&cfg.houses[i].name);
+            if v.contains(&this_house) {
+                return Recomendation {
+                    house: String::clone(&this_house),
+                    stock: String::from("Stock"),
+                    price: 32.0,
+                    rec: String::from("String"),
+                    raw: String::clone(&v.to_string())
+                };
+            }
+        }
+        return Recomendation::new();
     }
 } 
 
@@ -40,8 +45,10 @@ struct HOUSES {
 }
 
 #[derive(Deserialize, Serialize, Debug)]
-struct CONFIG {
+struct CONFIG {    
     houses: Vec<HOUSES>,
+    input_path: String,
+    output_path: String
 }
 
 
@@ -73,17 +80,29 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
 }
 
 pub fn scrape_placera() {
-    let input_path = Path::new("./src/config.json");
-    let output_path = Path::new("./src/output.json");
 
-    let cfg = {
-        let cfg = std::fs::read_to_string(&input_path).unwrap();
-        serde_json::from_str::<CONFIG>(&cfg).unwrap()
-    };
     let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
-    
+    let output_path = Path::new("./src/output.json");
+    let mut out: Vec<Recomendation> = Default::default();
     if let Some(adress) = generate_adress(date) {
-    println!("{}",adress);
+        println!("{}",adress);
+        out = parse_adress(&adress);
+    }
+    match std::fs::write(output_path, serde_json::to_string_pretty(&out).unwrap()) {
+        Err(e) => println!("{:?}", e),
+        _ => ()
+    }
+}
+
+fn parse_adress(adress: &String) -> Vec<Recomendation>{
+
+    let input_path = Path::new("./src/config.json");
+    let mut cfg = {
+        println!("{}",input_path.display());
+        let inner_cfg = std::fs::read_to_string(&input_path).unwrap();
+        serde_json::from_str::<CONFIG>(&inner_cfg).unwrap()
+    };
+    
     let response = reqwest::blocking::get(adress)
         .unwrap()
         .text()
@@ -99,32 +118,11 @@ pub fn scrape_placera() {
         let rows: Vec<&str> = title.split("\n").collect();
         for v in rows {
             if v.contains("<p>"){
-                let mut cont = false;
-                for i in 0..cfg.houses.len() {
-                    let this_house = String::clone(&cfg.houses[i].name);
-                    if v.contains(&this_house) {
-                        cont = true;
-                        let mut rec = Recomendation::from(&v);
-                        //println!("{}",v);
-                        rec.house = this_house;
-                        out.push(rec);
-                    }
-                }
-                if !cont {
-                    let mut rec = Recomendation::new();
-                    out.push(rec);
-                    println!("{v}");
-                }
+                let rec = Recomendation::from(&v, &cfg);
+                out.push(rec);
             }
         }
-        //dummies.sort_by(|d1, d2| d1.x.cmp(&d2.x));
-        
-        out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
-        match std::fs::write(output_path, serde_json::to_string_pretty(&out).unwrap()) {
-            Err(e) => println!("{:?}", e),
-            _ => ()
-        }
     }    
-}
-    println!("end of func");
+    out.sort_by(|d1, d2| d1.house.cmp(&d2.house));
+    return out;
 }
