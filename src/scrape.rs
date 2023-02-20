@@ -2,6 +2,7 @@
 use serde_derive::{Deserialize, Serialize};
 use chrono::{Datelike, NaiveDate, Weekday};
 use std::path::Path;
+use regex::Regex;
 
 #[derive(Deserialize, Serialize, Debug)]
 struct Recomendation {
@@ -26,9 +27,40 @@ impl Recomendation {
         for i in 0..cfg.houses.len() {
             let this_house = String::clone(&cfg.houses[i].name);
             if raw.contains(&this_house) {
+                //let re = Regex::new(r"^\d{4}-\d{2}-\d{2}$").unwrap();
+                println!("{:?}", &cfg.houses[i].regex[0].company[0].as_str());
+                println!("{}",raw);
+                let re = Regex::new(&cfg.houses[i].regex[0].company[0].as_str()).unwrap();
+                let mut company;
+                
+                match re.captures(raw) {
+                    Some(caps) => {
+                        //company = caps.get(1).unwrap().as_str();
+                        company = match caps.get(1) {
+                            Some(internal) => {
+                                internal.as_str()
+                            }
+                            None => {
+                                "Unknown"
+                            }
+                        };
+                        println!("{}", company);
+                    }
+                    None => {
+                        company = "Unknown";// The regex did not match. Deal with it here!
+                    }
+                }
+                /*
+                if re.
+                let caps = re.captures(raw).unwrap() {
+                    company = caps.get(1).map_or("", |m| m.as_str());
+                } else {
+                    company = "Unknown";
+                }*/
+
                 return Recomendation {
                     house: String::clone(&this_house),
-                    stock: String::from("Stock"),
+                    stock: String::from(company),
                     price: 32.0,
                     rec: String::from("String"),
                     raw: String::clone(&raw.to_string())

@@ -7,10 +7,10 @@
             "name":"DNB",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -18,10 +18,10 @@
             "name":"Citi Investment Research",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -29,10 +29,10 @@
             "name":"Deutsche Bank",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -40,10 +40,10 @@
             "name":"Carnegie",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["(?:<b>)?Carnegie (?:höjer)|(?:sänker)(?:</b>)? (?:riktkursen för )?(?:<b>)?(.*?)(?:</b>)? till"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -51,10 +51,10 @@
             "name":"Danske Bank",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -62,10 +62,10 @@
             "name":"Kepler Cheuvreux",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -73,10 +73,10 @@
             "name":"Citigroup",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -84,10 +84,10 @@
             "name":"Handelsbanken Capital Markets",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -95,10 +95,10 @@
             "name":"Bank of America Merrill Lynch",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -106,10 +106,10 @@
             "name":"SEB",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -117,10 +117,10 @@
             "name":"Redburn",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -128,10 +128,10 @@
             "name":"Keefe, Bruyette &amp; Woods",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -139,10 +139,10 @@
             "name":"KBW",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -150,10 +150,10 @@
             "name":"RBC",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -161,10 +161,10 @@
             "name":"Redburn",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -172,10 +172,10 @@
             "name":"Pareto Securities",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -183,10 +183,10 @@
             "name":"Morgan Stanley",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -194,10 +194,10 @@
             "name":"JP Morgan",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -205,10 +205,10 @@
             "name":"Bank of America Securities",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         },
@@ -216,10 +216,10 @@
             "name":"Barclays",
             "regex":[
                 {   
-                    "company":["<b>*<b>"],
-                    "buy":["*"],
-                    "sell":["*"],
-                    "neutral":["*"]
+                    "company":["<b>(.*?)</b>"],
+                    "buy":["(*)"],
+                    "sell":["(*)"],
+                    "neutral":["(*)"]
                 }
             ]
         }
