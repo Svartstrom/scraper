@@ -40,8 +40,18 @@ impl Recomendation {
 } 
 
 #[derive(Deserialize, Serialize, Debug)]
+struct REGEX {
+    company: Vec<String>,
+    buy: Vec<String>,
+    sell: Vec<String>,
+    neutral: Vec<String>
+}
+            
+            
+#[derive(Deserialize, Serialize, Debug)]
 struct HOUSES {
     name: String,
+    regex: Vec<REGEX>
 }
 
 #[derive(Deserialize, Serialize, Debug)]
