@@ -3,6 +3,9 @@ use serde_derive::{Deserialize, Serialize};
 use chrono::{Datelike, NaiveDate, Weekday};
 use std::path::Path;
 use regex::Regex;
+use std::fs::OpenOptions;
+use std::io::*;
+
 
 #[derive(Deserialize, Serialize, Debug)]
 struct Recomendation {
@@ -169,10 +172,46 @@ pub fn scrape_placera(cfg: &CONFIG) {
 }
 
 fn parse_adress(adress: &String, cfg: &CONFIG) -> Option<Vec<Recomendation>>{
-    let mut response = reqwest::blocking::get(adress)
-        .unwrap()
-        .text()
+    println!("{}",adress);
+    let new_adr = str::replace(adress, "/","_");
+    println!("{}",new_adr);
+    let mut file = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .open(new_adr)
         .unwrap();
+    file.seek(SeekFrom::End(0)).unwrap();
+    let pos = file.stream_position().unwrap();
+    //let rs = Path::new(adress).exists();
+    //let mut response;
+    let mut response = String::new();
+    if pos != 0 {
+        file.seek(SeekFrom::Start(0)).unwrap();
+        /*let mut file = OpenOptions::new()
+            .read(true)
+            .write(true)
+            .create(true)
+            .open(adress)
+            .unwrap();
+        response = String::new();*/
+        file.read_to_string(&mut response);
+    } else {
+        /*let mut file = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(adress);
+        file=file.unwrap();*/
+        response = reqwest::blocking::get(adress)
+            .unwrap()
+            .text()
+            .unwrap();
+
+        //file.seek(SeekFrom::Start(0)).unwrap();
+        if let Err(e) = writeln!(file, "{}",response) {
+            eprintln!("Couldn't write to file: {}", e);
+        }
+    }
     if response.contains(&cfg.path_404) {
         let adress = adress.replace("nya-", "ny-");
         println!("{}",adress);
