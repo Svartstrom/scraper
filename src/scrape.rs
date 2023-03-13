@@ -173,7 +173,7 @@ pub fn scrape_placera(cfg: &CONFIG) {
 
 fn parse_adress(adress: &String, cfg: &CONFIG) -> Option<Vec<Recomendation>>{
     println!("{}",adress);
-    let new_adr = str::replace(adress, "/","_");
+    let new_adr = "local/".to_string() + &str::replace(adress, "/","_");
     println!("{}",new_adr);
     let mut file = OpenOptions::new()
         .read(true)
