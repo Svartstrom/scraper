@@ -2,56 +2,116 @@
 use serde_derive::{Deserialize, Serialize};
 use chrono::{Datelike, NaiveDate, Weekday};
 use std::path::Path;
-//use std::mem;
+use regex::Regex;
+use std::fs::OpenOptions;
+use std::io::*;
+
 
 #[derive(Deserialize, Serialize, Debug)]
 struct Recomendation {
     house: String,
-    //rec: Vec<house_day>,
     stock: String,
     price: f32,
     rec: String,
     raw: String,
-    //date: NaiveDate,
 }
 
 impl Recomendation {
-    fn default () -> Self {
+    fn new (raw: &str) -> Self {
         return Recomendation {
-            house: String::from("Testing"),//clone(&this_house),
+            house: String::from("Unknown"),//clone(&this_house),
             stock: String::from("Stock"),
-            price: 32.0,
+            price: 100.0,
             rec: String::from("String"),
-            raw: String::from("v")
+            raw: String::clone(&raw.to_string())
         };
     }
-    fn maker() -> Self{
-        return Recomendation {
-            house: String::from("Testing"),//clone(&this_house),
-            stock: String::from("Stock"),
-            price: 32.0,
-            rec: String::from("String"),
-            raw: String::from("v")
-        };
+    fn from(raw: &str, cfg: &CONFIG) -> Self{
+        for i in 0..cfg.houses.len() {
+            let this_house = String::clone(&cfg.houses[i].name);
+            if raw.contains(&this_house) {
+                //let re = Regex::new(r"^\d{4}-\d{2}-\d{2}$").unwrap();
+                println!("{:?}", &cfg.houses[i].regex[0].company[0].as_str());
+                println!("{}",raw);
+                let re = Regex::new(&cfg.houses[i].regex[0].company[0].as_str()).unwrap();
+                let mut company;
+                
+                match re.captures(raw) {
+                    Some(caps) => {
+                        //company = caps.get(1).unwrap().as_str();
+                        company = match caps.get(1) {
+                            Some(internal) => {
+                                internal.as_str()
+                            }
+                            None => {
+                                "Unknown"
+                            }
+                        };
+                        println!("{}", company);
+                    }
+                    None => {
+                        company = "Unknown";// The regex did not match. Deal with it here!
+                    }
+                }
+                /*
+                if re.
+                let caps = re.captures(raw).unwrap() {
+                    company = caps.get(1).map_or("", |m| m.as_str());
+                } else {
+                    company = "Unknown";
+                }*/
+
+                return Recomendation {
+                    house: String::clone(&this_house),
+                    stock: String::from(company),
+                    price: 32.0,
+                    rec: String::from("String"),
+                    raw: String::clone(&raw.to_string())
+                };
+            }
+        }
+        return Recomendation::new(raw);
     }
 } 
 
 #[derive(Deserialize, Serialize, Debug)]
+struct REGEX {
+    company: Vec<String>,
+    buy: Vec<String>,
+    sell: Vec<String>,
+    neutral: Vec<String>
+}
+            
+            
+#[derive(Deserialize, Serialize, Debug)]
 struct HOUSES {
     name: String,
+    regex: Vec<REGEX>
 }
 
 #[derive(Deserialize, Serialize, Debug)]
-struct CONFIG {
+pub struct CONFIG {    
     houses: Vec<HOUSES>,
+    input_path: String,
+    output_path: String,
+    path_404: String
 }
 
 
 fn generate_adress(date: NaiveDate) -> Option<String> {
+    /*
+    https://www.placera.se/placera/redaktionellt/2023/02/20/mandagens-alla-ny-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/01/24/tisdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/15/onsdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/16/torsdagens-alla-nya-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2022/11/10/torsdagens-alla-ny-aktierekar.html
+    https://www.placera.se/placera/redaktionellt/2023/02/17/fredagens-alla-nya-aktierekar.html
+    */
+    
     let mut start = String::from("https://www.placera.se/placera/redaktionellt/");
     
     let day = match date.weekday() {
-        Weekday::Mon => String::from("måndagens"),
+        Weekday::Mon => String::from("mandagens"),
         Weekday::Tue => String::from("tisdagens"),
         Weekday::Wed => String::from("onsdagens"),
         Weekday::Thu => String::from("torsdagens"),
@@ -60,128 +120,107 @@ fn generate_adress(date: NaiveDate) -> Option<String> {
             return None;
         }
     };
-
-    let end = String::from("-alla-ny-aktierekar.html");
+    let end = String::from("-alla-nya-aktierekar.html");
     let day_nr_str;
+    let month_nr_str;
+    if date.month() < 10 {
+        month_nr_str = String::from("0".to_owned() + &date.month().to_string());
+    } else {
+        month_nr_str = date.month().to_string();
+    }
     if date.day() < 10 {
         day_nr_str = String::from("0".to_owned() + &date.day().to_string());
     } else {
         day_nr_str = date.day().to_string();
     }
-    let middle = String::from(date.year().to_string() + "/" + &date.month().to_string() + "/" + &day_nr_str.to_string() + "/") + &day;
+    let middle = String::from(date.year().to_string() + "/" + &month_nr_str.to_string() + "/" + &day_nr_str.to_string() + "/") + &day;
     start.push_str(&middle);
     start.push_str(&end);
     return Some(start); 
 }
 
-/* fn print_to_json<T>(titles: Box<map<String>>, cfg: T, &out:&Vec<Recomendation>) {
-    for title in *titles {
-        let rows: Vec<&str> = title.split("\n").collect();
-        for v in rows {
-            if v.contains("<p>"){
-                let mut cont = false;
-                for i in 0..cfg.houses.len() {
-                    let this_house = String::clone(&cfg.houses[i].name);
-                    if v.contains(&this_house) {
-                        cont = true;
-                        let  rec = Recomendation {
-                            house: String::clone(&this_house),
-                            stock: String::from("Stock"),
-                            price: 32.0,
-                            rec: String::from("String"),
-                            raw: String::from(v)
-                        };
-                        out.push(rec);
-                    }
-                }
-                if !cont {
-                    println!("{v}");
-                }
-            }
-        }
-        match std::fs::write(cfg.output_path, serde_json::to_string_pretty(&out).unwrap()) {
-            Err(e) => println!("{:?}", e),
-            _ => ()
-        }
-    } 
-} */
-
-/*pub fn new_scrape_placera() {
-    let input_path = Path::new("./src/config.json");
+pub fn scrape_placera(cfg: &CONFIG) {
+    let mut all_recomendations: Vec<Recomendation> = Default::default();
+    
+    let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
     //let output_path = Path::new("./src/output.json");
-
-    let cfg = {
-        let cfg = std::fs::read_to_string(&input_path).unwrap();
-        serde_json::from_str::<CONFIG>(&cfg).unwrap()
-    };
-
-    cfg.input_path = Path::new("./src/config.json");
-    cfg.output_path = Path::new("./src/output.json");
-    let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
-    
     if let Some(adress) = generate_adress(date) {
-        //Some(adress) => adress,
         println!("{}",adress);
-        let response = reqwest::blocking::get(adress)
-        .unwrap()
-        .text()
-        .unwrap();
-        let document = scraper::Html::parse_document(&response);
-        let title_selector = scraper::Selector::parse("div.parbase").unwrap();
-        let titles = document.select(&title_selector).map(|x| x.inner_html());
-        /*let response = match reqwest::blocking::get(adress) {
-            Ok(Value) => {
-                let resp = match Value.text() {
-                    Ok(Value) => {
-                        return Value;
-                    }
-                    Err(error) => {
-                        println!("{}", error);
-                    }
-                };
+        if let Some(daily_recomendations) = parse_adress(&adress, &cfg) {
+            for rec in daily_recomendations {
+                all_recomendations.push(rec);
             }
-            Err(error) => println!("{}", error),
-        };*/
-        let mut out: Vec<Recomendation> = Default::default();
-        let vector = print_to_json(titles, cfg, &out);
-    };
-}*/
-
-pub fn scrape_placera() {
-    let input_path = Path::new("./src/config.json");
-    let output_path = Path::new("./src/output.json");
-
-    let cfg = {
-        let cfg = std::fs::read_to_string(&input_path).unwrap();
-        serde_json::from_str::<CONFIG>(&cfg).unwrap()
-    };
-
-    //input_path = Path::new("./src/config.json");
-    //output_path = Path::new("./src/output.json");
-    let date = NaiveDate::from_ymd_opt(2022, 11, 09).unwrap();
+        }
+    }
+    println!("{}",all_recomendations.len());
+    let date = NaiveDate::from_ymd_opt(2022, 11, 10).unwrap();
     
     if let Some(adress) = generate_adress(date) {
+        println!("{}",adress);
+        if let Some(daily_recomendations) = parse_adress(&adress, &cfg) {
+            for rec in daily_recomendations {
+                all_recomendations.push(rec);
+            }
+        }
+    }
+    println!("{}",all_recomendations.len());
+    all_recomendations.sort_by(|d1, d2| d1.house.cmp(&d2.house));
+    match std::fs::write(&cfg.output_path, serde_json::to_string_pretty(&all_recomendations).unwrap()) {
+        Err(e) => println!("{:?}", e),
+        _ => ()
+    }
+}
+
+fn parse_adress(adress: &String, cfg: &CONFIG) -> Option<Vec<Recomendation>>{
     println!("{}",adress);
-    let response = reqwest::blocking::get(adress)
+    let new_adr = "local/".to_string() + &str::replace(adress, "/","_");
+    println!("{}",new_adr);
+    let mut file = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .open(new_adr)
+        .unwrap();
+    file.seek(SeekFrom::End(0)).unwrap();
+    let pos = file.stream_position().unwrap();
+    //let rs = Path::new(adress).exists();
+    //let mut response;
+    let mut response = String::new();
+    if pos != 0 {
+        file.seek(SeekFrom::Start(0)).unwrap();
+        /*let mut file = OpenOptions::new()
+            .read(true)
+            .write(true)
+            .create(true)
+            .open(adress)
+            .unwrap();
+        response = String::new();*/
+        file.read_to_string(&mut response);
+    } else {
+        /*let mut file = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(adress);
+        file=file.unwrap();*/
+        response = reqwest::blocking::get(adress)
+            .unwrap()
+            .text()
+            .unwrap();
+
+        //file.seek(SeekFrom::Start(0)).unwrap();
+        if let Err(e) = writeln!(file, "{}",response) {
+            eprintln!("Couldn't write to file: {}", e);
+        }
+    }
+    if response.contains(&cfg.path_404) {
+        let adress = adress.replace("nya-", "ny-");
+        println!("{}",adress);
+        response = reqwest::blocking::get(adress)
         .unwrap()
         .text()
         .unwrap();
+    }
     
-        /*let response = match reqwest::blocking::get(adress) {
-        Ok(Value) => {
-            let resp = match Value.text() {
-                Ok(Value) => Value,
-                Err(error) => Err(error),//println!("{}", error),
-            };
-        }
-        Err(error) => Err(error),//println!("{}", error),
-    };*/
-    //    "https://www.placera.se/placera/redaktionellt/2022/11/09/onsdagens-alla-ny-aktierekar.html",
-    //)
-    //.unwrap()
-    //.text()
-    //.unwrap();
-
     let document = scraper::Html::parse_document(&response);
     let title_selector = scraper::Selector::parse("div.parbase").unwrap();
     let titles = document.select(&title_selector).map(|x| x.inner_html());
@@ -192,33 +231,11 @@ pub fn scrape_placera() {
         let rows: Vec<&str> = title.split("\n").collect();
         for v in rows {
             if v.contains("<p>"){
-                let mut cont = false;
-                for i in 0..cfg.houses.len() {
-                    let this_house = String::clone(&cfg.houses[i].name);
-                    if v.contains(&this_house) {
-                        cont = true;
-                        //let mut rec = Recomendation::default();
-                        let mut rec = Recomendation::maker();
-                        /*rec = Recomendation.maker(); {
-                            house: String::clone(&this_house),
-                            stock: String::from("Stock"),
-                            price: 32.0,
-                            rec: String::from("String"),
-                            raw: String::from(v)
-                        };*/
-                        out.push(rec);
-                    }
-                }
-                if !cont {
-                    println!("{v}");
-                }
+                let rec = Recomendation::from(&v, &cfg);
+                out.push(rec);
             }
         }
-        match std::fs::write(output_path, serde_json::to_string_pretty(&out).unwrap()) {
-            Err(e) => println!("{:?}", e),
-            _ => ()
-        }
     }    
-}
-    println!("end of func");
+
+    return Some(out);
 }

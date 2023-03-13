@@ -1,114 +1,212 @@
 [
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Barclays",
+    "stock": "Barclays sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Barclays sänker</b> riktkursen för <b>Acast</b> till 12,80 kronor (13,50), upprepar jämvikt</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Barclays",
+    "stock": "Barclays sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Barclays sänker</b> riktkursen för <b>Vimian</b> till 50 kronor (85), upprepar övervikt</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Barclays",
+    "stock": "Barclays sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Barclays sänker</b> riktkursen för <b>Alfa Laval</b> till 280 kronor (285), upprepar jämvikt</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie återupptar </b>bevakningen av <b>Securitas </b>med köprekommendation. Riktkursen är 114 kronor.</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie </b>sänker riktkursen för <b>Acast </b>till 10 kronor (14), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie höjer</b> riktkursen för <b>Profoto</b> till 97 kronor (95), upprepar behåll</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie höjer</b> riktkursen för <b>Boozt</b> till 110 kronor (95), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie höjer Fractal Gaming</b> till köp (behåll)</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Embracer",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie sänker</b> riktkursen för <b>Embracer</b> till 105 kronor från 125 kronor. Rekommendationen köp upprepas.</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Instalco",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie sänker</b> riktkursen för <b>Instalco</b> till 53 kronor (56), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Nimbus",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie sänker</b> riktkursen för <b>Nimbus</b> till 48 kronor (50), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Carnegie",
+    "stock": "Unknown",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Carnegie höjer</b> riktkursen för <b>Bico</b> till 153 kronor (150), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Citi Investment Research",
+    "stock": "Citi Investment Research sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Citi Investment Research sänker</b> sin rekommendation för <b>SHB</b> till neutral från köp. Riktkursen sänks till 110 från 114 kronor.</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Citigroup",
+    "stock": "Citigroup sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Citigroup sänker</b> riktkursen för <b>Swedbank</b> till 190 kronor (195), upprepar köp</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "Citigroup",
+    "stock": "Citigroup sänker",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>Citigroup sänker</b> riktkursen för <b>SEB</b> till 119 kronor (124), upprepar neutral</p>"
   },
   {
-    "house": "Testing",
-    "stock": "Stock",
+    "house": "DNB",
+    "stock": "DNB Markets höjer",
     "price": 32.0,
     "rec": "String",
-    "raw": "v"
+    "raw": "<p><b>DNB Markets höjer</b> sin rekommendation för <b>Latour</b> till köp från behåll. Riktkursen höjs till 225 från 220 kronor.</p>"
+  },
+  {
+    "house": "DNB",
+    "stock": "DNB Markets höjer",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>DNB Markets höjer</b> riktkursen för <b>New Wave</b> till 240 kronor från 225 kronor. Rekommendationen köp upprepas.</p>"
+  },
+  {
+    "house": "DNB",
+    "stock": "DNB sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>DNB sänker</b> riktkursen för <b>Stillfront</b> till 35 kronor (45), upprepar köp</p>"
+  },
+  {
+    "house": "Danske Bank",
+    "stock": "Danske Bank sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Danske Bank sänker</b> riktkursen för <b>Synsam</b> till 64 kronor (75), upprepar köp</p>"
+  },
+  {
+    "house": "Deutsche Bank",
+    "stock": "Deutsche Bank sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Deutsche Bank sänker</b> riktkursen för Ericsson till 70 kronor från 80 kronor. Rekommendationen behåll upprepas.</p>"
+  },
+  {
+    "house": "Handelsbanken Capital Markets",
+    "stock": "Handelsbanken Capital Markets sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Handelsbanken Capital Markets sänker</b> sin långsiktiga rekommendation, på tre års sikt, för <b>Stendörren</b> till market perform från outperform. Riktkursen är 240 kronor.</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Kepler Cheuvreux höjer",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux höjer</b> riktkursen för <b>New Wave</b> till 240 kronor (220), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Kepler Cheuvreux sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>Wästbygg</b> till 52 kronor (78), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Kepler Cheuvreux sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux sänker</b> riktkursen för <b>G5 Entertainment </b>till 329 kronor (335), upprepar köp</p>"
+  },
+  {
+    "house": "Kepler Cheuvreux",
+    "stock": "Kepler Cheuvreux höjer",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Kepler Cheuvreux höjer</b> riktkursen för <b>Cibus</b> till 155 kronor (145), upprepar behåll</p>"
+  },
+  {
+    "house": "Pareto Securities",
+    "stock": "Pareto Securities sänker",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Pareto Securities sänker</b> riktkursen för <b>Storytel</b> till 95 kronor (135), upprepar köp</p>"
+  },
+  {
+    "house": "Pareto Securities",
+    "stock": "Pareto Securities sänker ",
+    "price": 32.0,
+    "rec": "String",
+    "raw": "<p><b>Pareto Securities sänker </b>riktkursen för <b>Synthetic MR</b> till 42 kronor från 50 kronor. Rekommendationen köp upprepas.</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Société Générale höjer</b> riktkursen för <b>Essity</b> till 288 kronor (258), upprepar köp</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Berenberg sänker</b> riktkursen för <b>Husqvarna</b> till 75 kronor (85), upprepar behåll</p>"
+  },
+  {
+    "house": "Unknown",
+    "stock": "Stock",
+    "price": 100.0,
+    "rec": "String",
+    "raw": "<p><b>Jefferies sänker</b> riktkursen för <b>SCA</b> till 140 kronor (160), upprepar behåll</p>"
   }
 ]
